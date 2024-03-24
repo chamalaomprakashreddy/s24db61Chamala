@@ -1,3 +1,17 @@
 extends layout
 
 block content
+  - let results = [{ watercraft_type: 'Sailboat', length: 10.5, maximum_capacity: 6 },{ watercraft_type: ' Canoe', length: 4.2, maximum_capacity: 3 },{ watercraft_type: 'Jet Ski', length: 3, maximum_capacity: 2 }]
+
+  .container-fluid
+    .row
+      each item, index in results
+        .col-sm-4
+          .craft(onclick=`buy(${index})`)
+            h1 #{item.watercraft_type}
+            p length: #{item.length}
+            p maximum_capacity: #{item.maximum_capacity}
+          .col-sm-2
+            p watercraft_type: #{item.watercraft_type}
+            p length: #{item.length}
+            p maximum_capacity: #{item.maximum_capacity}
