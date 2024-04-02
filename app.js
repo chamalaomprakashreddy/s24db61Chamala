@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var watercraft = require('./routes/watercraft');
 var gridrsRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick')
+var Costume = require("./models/costume");
+const costume = require('./models/costume');
 
 var app = express();
 
@@ -27,6 +29,7 @@ app.use('/users', usersRouter);
 app.use('/watercraft', watercraft);
 app.use('/grid',gridrsRouter);
 app.use('/pick',pickRouter);
+app.use("./costume",costume);
 
 
 // catch 404 and forward to error handler
@@ -52,9 +55,3 @@ const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString);
 
-//Get the default connection
-var db = mongoose.connection;
-//Bind connection to error event
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once("open", function(){
-console.log("Connection to DB succeeded")});
