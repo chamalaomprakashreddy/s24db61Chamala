@@ -71,8 +71,19 @@ console.log("First object saved")}
 ).catch(err=>{
 console.error(err)
 });
+let instance2 = new watercraft({ watercraft_type: ' Canoe', length: 4.2, maximum_capacity: 3});
+instance2.save().then(doc=>{
+console.log("Second object saved")}
+).catch(err=>{
+console.error(err)
+});
+let instance3 = new watercraft({ watercraft_type: 'Jet Ski', length: 3, maximum_capacity: 2 });
+instance3.save().then(doc=>{
+console.log("Third object saved")}
+).catch(err=>{
+console.error(err)
+});
 }
-
 let reseed = true;
 if (reseed) {recreateDB();}
 
