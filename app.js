@@ -8,9 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var watercraft = require('./routes/watercraft');
 var gridrsRouter = require('./routes/grid');
-var pickRouter = require('./routes/pick')
-var Costume = require("./models/costume");
-const costume = require('./models/costume');
+var pickRouter = require('./routes/pick');
+var watercraft = require("./models/watercraft");
 
 var app = express();
 
@@ -29,7 +28,6 @@ app.use('/users', usersRouter);
 app.use('/watercraft', watercraft);
 app.use('/grid',gridrsRouter);
 app.use('/pick',pickRouter);
-app.use("./costume",costume);
 
 
 // catch 404 and forward to error handler
@@ -50,8 +48,32 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
+
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString);
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
+
+// We can seed the collection if needed on
+
+async function recreateDB(){
+// Delete everything
+await watercraft.deleteMany();
+let instance1 = new
+watercraft({watercraft_type: 'Sailboat', length: 10.5, maximum_capacity: 6});
+instance1.save().then(doc=>{
+console.log("First object saved")}
+).catch(err=>{
+console.error(err)
+});
+}
+let reseed = true;
+if (reseed) {recreateDB();}
+
 
