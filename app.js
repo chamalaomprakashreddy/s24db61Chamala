@@ -65,14 +65,14 @@ console.log("Connection to DB succeeded")});
 async function recreateDB(){
 // Delete everything
 await watercraft.deleteMany();
-let instance1 = new
-watercraft({watercraft_type: 'Sailboat', length: 10.5, maximum_capacity: 6});
+let instance1 = new watercraft({watercraft_type: 'Sailboat', length: 10.5, maximum_capacity: 6});
 instance1.save().then(doc=>{
 console.log("First object saved")}
 ).catch(err=>{
 console.error(err)
 });
 }
+
 let reseed = true;
 if (reseed) {recreateDB();}
 

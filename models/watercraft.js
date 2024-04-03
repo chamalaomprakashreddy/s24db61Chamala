@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 const watercraftSchema = mongoose.Schema({
 watercraft_type: String,
-size: String,
-cost: Number
+length: Number,
+maximum_capacity: Number
 })
 module.exports = mongoose.model("watercraft",
 watercraftSchema)
