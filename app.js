@@ -6,11 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var watercraft = require('./routes/watercraft');
+var watercraftRouter = require('./routes/watercraft');
 var gridrsRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
 var watercraft = require("./models/watercraft");
-
+var resourceRouter = require("./routes/resources");
 var app = express();
 
 // view engine setup
@@ -25,9 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/watercraft', watercraft);
+app.use('/watercraft', watercraftRouter);
 app.use('/grid',gridrsRouter);
 app.use('/pick',pickRouter);
+app.use('/resource',resourceRouter);
 
 
 // catch 404 and forward to error handler
@@ -77,7 +78,7 @@ console.log("Second object saved")}
 ).catch(err=>{
 console.error(err)
 });
-let instance3 = new watercraft({ watercraft_type: 'Jet Ski', length: 3, maximum_capacity: 2 });
+let instance3 = new watercraft({ watercraft_type: 'Jet Ski', length: 3, maximum_capacity: 1 });
 instance3.save().then(doc=>{
 console.log("Third object saved")}
 ).catch(err=>{
