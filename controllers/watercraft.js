@@ -48,24 +48,24 @@ res.send(`{"error": ${err}}`);
 }
 };
 
-// // Handle watercraft create on POST.
-// exports.watercraft_create_post = async function(req, res) {
-//     console.log(req.body)
-//     let document = new watercraft();
-//     // We are looking for a body, since POST does not have query parameters.
-//     // Even though bodies can be in many different formats, we will be picky
-//     // and require that it be a json object
-//     // {"watercraft_type":"goat", "cost":12, "size":"large"}
-//     document.watercraft_type = req.body.watercraft_type;
-//     document.length = req.body.length;
-//     document.maximum_capaciy = req.body.maximum_capaciy;
-//     try{
-//     let result = await document.save();
-//     res.send(result);
-//     }
-//     catch(err){
-//     res.status(500);
-//     res.send(`{"error": ${err}}`);
-//     }
-//     };
+// Handle watercraft create on POST.
+exports.watercraft_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new watercraft();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"watercraft_type":"goat", "cost":12, "size":"large"}
+    document.watercraft_type = req.body.watercraft_type;
+    document.length = req.body.length;
+    document.maximum_capaciy = req.body.maximum_capaciy;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
     
