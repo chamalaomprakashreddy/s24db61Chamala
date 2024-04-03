@@ -7,3 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+var express = require('express');
+const watercraft_controlers= require('../controllers/watercraft');
+var router = express.Router();
+/* GET watercraft */
+router.get('/', watercraft_controlers.watercraft_view_all_Page );
+module.exports = router;

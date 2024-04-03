@@ -32,4 +32,18 @@ res.status(500);
 res.send(`{"error": ${err}}`);
 }
 };
-    
+
+
+
+// VIEWS
+// Handle a show all view
+exports.watercraft_view_all_Page = async function(req, res) {
+try{
+thewatercraft = await watercraft.find();
+res.render('watercraft', { title: 'watercraft Search Results', results: thewatercraft });
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
+};
