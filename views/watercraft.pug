@@ -1,11 +1,10 @@
 extends layout
 
 block content
-  - let results = [{ watercraft_type: 'Sailboat', length: 10.5, maximum_capacity: 6 },{ watercraft_type: ' Canoe', length: 4.2, maximum_capacity: 3 },{ watercraft_type: 'Jet Ski', length: 3, maximum_capacity: 2 }]
-
+  - let watercraft  = results 
   .container-fluid
     .row
-      each item, index in results
+      each item, index in watercraft 
         .col-sm-4
           .craft(onclick=`buy(${index})`)
             h1 #{item.watercraft_type}
