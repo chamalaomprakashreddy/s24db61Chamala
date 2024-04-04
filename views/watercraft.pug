@@ -14,6 +14,9 @@ block content
             p watercraft_type: #{item.watercraft_type}
             p length: #{item.length}
             p maximum_capacity: #{item.maximum_capacity}
+            button.btn( class="btn-primary ml-1") Update
+            button.btn( class="btn-danger ml-1") Delete
+            button.btn( class="btn-info ml-1") inspect
     script.
         function buy(index) {
             alert("You purchased item " + index);
