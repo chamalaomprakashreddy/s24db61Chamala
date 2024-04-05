@@ -14,3 +14,6 @@ var router = express.Router();
 /* GET watercraft */
 router.get('/', watercraft_controlers.watercraft_view_all_Page );
 module.exports = router;
+
+// GET request for one watercraft.
+//router.get('/watercraft/:id', watercraft_controller.watercraft_detail);
