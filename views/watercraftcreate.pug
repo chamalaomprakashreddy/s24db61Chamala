@@ -11,8 +11,8 @@ block content
       input#length(type='number', name='length')
     div.form-group
       label.watercraftAttr(for='maximum_capacity') maximum capacity
-      input#maximum_capacity(type='number', name='maximum_capacity')
-    input(type="submit")
+      input#maximum_capacity(type='number' ,  name='maximum_capacity')
+    input(type="submit" id="submit")
     script.
       document.forms['watercraftForm'].addEventListener('submit', (event) => {
         event.preventDefault();

@@ -10,10 +10,24 @@ a {
 h1 {
   color: aqua;
   background-color: beige;
+  size: 10px;
 }
 
 .watercraftAttr {
   background-color: aquamarine;
   width: 120px;
   }
-  
+
+#watercraftForm{
+  border: 0cap;
+  background-color: chartreuse;
+  color: cornsilk;
+}
+#submit{
+  color: aquamarine;
+  background-color: black;
+}
+#input{
+  color: aqua;
+  background-color: black;
+}
