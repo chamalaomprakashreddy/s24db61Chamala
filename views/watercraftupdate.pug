@@ -1,0 +1,39 @@
+extends layout
+block content
+  h1= title
+  - let watercraftid = toShow._id
+  - let watercraft_type = toShow.watercraft_type
+  - let length = toShow.length
+  - let maximum_capacity = toShow.maximum_capacity
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{watercraftid}
+  - let actionid = "/resource/watercraft/" + watercraftid
+  form(id='watercraftForm', action= actionid, method="PUT")
+    div.form-group
+      label.watercraftAttr(for='watercraft_type') watercraft type
+      input#watercraft_type(type='text', name='watercraft_type', value= watercraft_type )
+    div.form-group
+      label.watercraftAttr(for='maximum_capacity') watercraft maximum_capacity
+      input#maximum_capacity(type='text', name='maximum_capacity', value= maximum_capacity )
+    div.form-group
+      label.watercraftAttr(for='length') watercraft length
+      input#length(type='number', name='length', value= length )
+    input(type="submit")
+  script.
+    document.forms['watercraftForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed: " + error);
+      });
+    });

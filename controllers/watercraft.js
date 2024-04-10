@@ -142,4 +142,33 @@ exports.watercraft_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+
+
+// Handle building the view for updating a watercraft.
+// query provides the id
+exports.watercraft_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await watercraft.findById(req.query.id)
+    res.render('watercraftupdate', { title: 'watercraft Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };    
+
+    // Handle a delete one view with id from query
+exports.watercraft_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await watercraft.findById(req.query.id)
+    res.render('watercraftdelete', { title: 'watercraft Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
     

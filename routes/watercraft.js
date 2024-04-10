@@ -23,3 +23,9 @@ router.get('/detail', watercraft_controlers.watercraft_view_one_Page);
 
 /* GET create watercraft page */
 router.get('/create', watercraft_controlers.watercraft_create_Page);
+
+/* GET create update page */
+router.get('/update', watercraft_controlers.watercraft_update_Page);
+
+/* GET delete watercraft page */
+router.get('/delete', watercraft_controlers.watercraft_delete_Page);
