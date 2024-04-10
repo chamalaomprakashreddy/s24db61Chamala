@@ -17,3 +17,9 @@ module.exports = router;
 
 // GET request for one watercraft.
 //router.get('/watercraft/:id', watercraft_controller.watercraft_detail);
+
+/* GET detail watercraft page */
+router.get('/detail', watercraft_controlers.watercraft_view_one_Page);
+
+/* GET create watercraft page */
+router.get('/create', watercraft_controlers.watercraft_create_Page);

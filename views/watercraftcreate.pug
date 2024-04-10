@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  form(id='watercraftForm', action="/resource/watercraft", method="POST")
+    div.form-group
+      label.watercraftAttr(for='watercraft_type') watercraft type
+      input#watercraft_type(type='text', name='watercraft_type', value=watercraft_type)
+    div.form-group
+      label.watercraftAttr(for='length') Length
+      input#length(type='number', name='length', value=length)
+    div.form-group
+      label.watercraftAttr(for='maximum_capacity') Maximum Capacity
+      input#maximum_capacity(type='number', name='maximum_capacity', value=maximum_capacity)
+    input(type="submit")
+
+  script.
+    document.forms['watercraftForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error );
+      });
+    });

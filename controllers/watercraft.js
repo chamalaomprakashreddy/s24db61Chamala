@@ -114,3 +114,32 @@ res.status(500)
 res.send(`{"error": Error deleting ${err}}`);
 }
 };
+
+// Handle a show one view with id specified by query
+exports.watercraft_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await watercraft.findById( req.query.id)
+    res.render('watercraftdetail',
+    { title: 'watercraft Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+    // Handle building the view for creating a watercraft.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.watercraft_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('watercraftcreate', { title: 'watercraft Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    

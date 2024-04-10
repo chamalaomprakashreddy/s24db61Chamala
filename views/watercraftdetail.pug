@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let watercraftid = toShow._id
+  - let watercraft_type = toShow.watercraft_type
+  - let length = toShow.length
+  - let maximum_capacity = toShow.maximum_capacity
+  div
+    div.row
+      div.watercraftAttr.mr-3 Watercraft ID:
+      div #{watercraftid}
+    div.row
+      div.watercraftAttr.mr-3 Watercraft Type:
+      div #{watercraft_type}
+    div.row
+      div.watercraftAttr.mr-3 Maximum Capacity:
+      div #{maximum_capacity}
+    div.row
+      div.watercraftAttr.mr-3 Length:
+      div #{length}
