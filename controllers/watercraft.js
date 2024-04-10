@@ -24,8 +24,8 @@ res.send('NOT IMPLEMENTED: watercraft update PUT' + req.params.id);
 // List of all watercrafts
 exports.watercraft_list = async function(req, res) {
 try{
-    watercraft = await watercraft.find();
-res.send(watercraft);
+    thewatercraft = await watercraft.find();
+res.send(thewatercraft);
 }
 catch(err){
 res.status(500);
@@ -39,8 +39,8 @@ res.send(`{"error": ${err}}`);
 // Handle a show all view
 exports.watercraft_view_all_Page = async function(req, res) {
 try{
-watercraft = await watercraft.find();
-res.render('watercraft', { title: 'watercraft Search Results', results: watercraft });
+thewatercraft = await watercraft.find();
+res.render('watercraft', { title: 'thewatercraft Search Results', results: watercraft });
 }
 catch(err){
 res.status(500);
