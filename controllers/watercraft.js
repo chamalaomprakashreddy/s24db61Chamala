@@ -58,7 +58,7 @@ exports.watercraft_create_post = async function(req, res) {
     // {"watercraft_type":"goat", "cost":12, "size":"large"}
     document.watercraft_type = req.body.watercraft_type;
     document.length = req.body.length;
-    document.maximum_capaciy = req.body.maximum_capaciy;
+    document.maximum_capacity = req.body.maximum_capacity;
     try{
     let result = await document.save();
     res.send(result);
