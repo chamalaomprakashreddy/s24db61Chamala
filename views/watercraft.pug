@@ -29,7 +29,7 @@ block content
   div(class="container-fluid")
   div(class="row m-1")
     each item in items
-      - let destination = `dispatch(\"/hat/update?id=${item._id}\")`
+      - let destination = `dispatch(\"/watercraft/update?id=${item._id}\")`
       div(class="row-sm-2", class="m-1") Item: #{item.watercraft_type}(#{item.length}) is #{item.maximum_capacity}
       button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
