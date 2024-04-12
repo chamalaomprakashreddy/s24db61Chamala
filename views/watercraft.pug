@@ -1,23 +1,37 @@
-extends layout
+//- extends layout
 
+//- block content
+//-   - let watercraft  = results 
+//-   .container-fluid
+//-     .row
+//-       each item, index in watercraft 
+//-         .col-sm-4
+//-           .craft(onclick=`buy(${index})`)
+//-             h1 #{item.watercraft_type}
+//-             p length: #{item.length}
+//-             p maximum_capacity: #{item.maximum_capacity}
+//-           .col-sm-2
+//-             p watercraft_type: #{item.watercraft_type}
+//-             p length: #{item.length}
+//-             p maximum_capacity: #{item.maximum_capacity}
+//-             button.btn( class="btn-primary ml-1") Update
+//-             button.btn( class="btn-danger ml-1") Delete
+//-             button.btn( class="btn-info ml-1") inspect
+//-     script.
+//-         function buy(index) {
+//-             alert("You purchased item " + index);
+//-         }
+extends layout
+ 
 block content
-  - let watercraft  = results 
-  .container-fluid
-    .row
-      each item, index in watercraft 
-        .col-sm-4
-          .craft(onclick=`buy(${index})`)
-            h1 #{item.watercraft_type}
-            p length: #{item.length}
-            p maximum_capacity: #{item.maximum_capacity}
-          .col-sm-2
-            p watercraft_type: #{item.watercraft_type}
-            p length: #{item.length}
-            p maximum_capacity: #{item.maximum_capacity}
-            button.btn( class="btn-primary ml-1") Update
-            button.btn( class="btn-danger ml-1") Delete
-            button.btn( class="btn-info ml-1") inspect
-    script.
-        function buy(index) {
-            alert("You purchased item " + index);
-        }
+  h1= title
+  - let items = results;
+  div(class="container-fluid")
+  div(class="row m-1")
+    each item in items
+      - let destination = `dispatch(\"/hat/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item: #{item.watercraft_type}(#{item.length}) is #{item.maximum_capacity}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  script.
+    function dispatch(path){
+      window.location.href=path}
