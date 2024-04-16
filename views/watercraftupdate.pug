@@ -24,16 +24,19 @@ block content
         input#length(type='number', name='length', value= length )
       input(type="submit")
     script.
-      document.forms['watercraftForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show user that form is being submitted
-        fetch(event.target.action, {
-          method: 'PUT',
-          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        })
-        .then((resp) => {
-          return resp.json(); // or resp.text() or whatever the server sends
-        })
-        .then((body) => {
-          alert("Update succeeded");
-          // TODO h
+        document.forms['watercraftForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+                return resp.text(); // or resp.text() or w the server sends 
+            }).then((body) => {
+                alert("Update succeeded")
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Update failed " + error )
+            });
+        });

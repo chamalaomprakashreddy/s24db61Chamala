@@ -16,9 +16,15 @@ module.exports = router;
 
 // GET request for one watercraft.
 router.get('/watercraft/:id', watercraft_controlers.watercraft_detail);
+const secured = (req, res, next) => {
+  if (req.user){
+  return next();
+  }
+  res.redirect("/login");
+  }
 
 /* GET detail watercraft page */
-router.get('/detail', watercraft_controlers.watercraft_view_one_Page);
+router.get('/detail',secured,watercraft_controlers.watercraft_view_one_Page);
 
 /* GET create watercraft page */
 router.get('/create', watercraft_controlers.watercraft_create_Page);
@@ -31,18 +37,12 @@ router.get('/create', watercraft_controlers.watercraft_create_Page);
 
 // A little function to check if we have an authorized user and continue on
 
-// redirect to login.
-const secured = (req, res, next) => {
-if (req.user){
-return next();
-}
-res.redirect("/login");
-}
+// redirect to login
 
 /* GET update watercraft page */
 router.get('/update', secured,watercraft_controlers.watercraft_update_Page);
 /* GET delete watercraft page */
-router.get('/delete', watercraft_controlers.watercraft_delete_Page);
+router.get('/delete',secured, watercraft_controlers.watercraft_delete_Page);
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
